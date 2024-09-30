@@ -19,12 +19,12 @@ export const Register = () => {
 
             <div>
                 <form action="" onSubmit={registerUser}>
-                    <label htmlFor="">Nombre:</label>
-                    <input type="text" name="" id="" placeholder="Ingrese su nombre" onChange={(e) => setData({...data, name:e.target.value})}/>
-                    <label htmlFor="">Email::</label>
-                    <input type="email" name="" id="" placeholder="Ingrese su email" onChange={(e) => setData({...data, email:e.target.value})}/>
-                    <label htmlFor="">Password:</label>
-                    <input type="password" name="" id="" placeholder="Ingrese su password" onChange={(e) => setData({...data, password:e.target.value})}/>
+                    <label htmlFor="nombre">Nombre:</label>
+                    <input type="text" name="nombre" placeholder="Ingrese su nombre" onChange={(e) => setData({...data, name:e.target.value})}/>
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" name="email" placeholder="Ingrese su email" onChange={(e) => setData({...data, email:e.target.value})}/>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" name="password" placeholder="Ingrese su password" onChange={(e) => setData({...data, password:e.target.value})}/>
                     <button type="submit">Registrarse</button>
                 </form>
             </div>

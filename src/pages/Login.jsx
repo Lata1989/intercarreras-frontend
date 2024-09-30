@@ -26,6 +26,8 @@ export const Login = () => {
 
             // Redirigir al usuario a la página protegida
             navigate('/tamagochi');
+            // Refrescar la página completa
+            window.location.reload();  // Refresca la página después de la redirección
         } catch (err) {
             setError('Credenciales incorrectas o error de conexión');
         }

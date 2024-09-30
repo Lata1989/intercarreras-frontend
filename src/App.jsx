@@ -6,8 +6,10 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Home } from './pages/Home';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
+import { Tamagochi } from './pages/Tamagochi';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 
-export const  App = () => {
+export const App = () => {
   return (
     <>
       <Navbar></Navbar>
@@ -15,6 +17,8 @@ export const  App = () => {
         <Route path='/' element={<Home></Home>} ></Route>
         <Route path='/register' element={<Register></Register>} ></Route>
         <Route path='/login' element={<Login></Login>} ></Route>
+        {/* Ruta protegida */}
+        <Route path="/tamagochi" element={<PrivateRoute><Tamagochi /></PrivateRoute>} />
       </Routes>
     </>
   );

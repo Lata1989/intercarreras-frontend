@@ -1,113 +1,103 @@
-import { useState } from "react";
-import axios from "axios";  // Importar Axios
+import { useState } from 'react';
+import axios from 'axios';
+import { Form, Input, Button } from 'antd';
 
-export const Register = () => {
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        password: ''
-    });
+export const Register = ({ onShowLogin }) => {
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
 
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-    const registerUser = async (e) => {
-        e.preventDefault();
+  const registerUser = async values => {
+    // Resetea mensajes previos
+    setError('');
+    setSuccess('');
 
-        // Resetea mensajes previos
-        setError('');
-        setSuccess('');
-
-        try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
-                nombre: data.name,
-                email: data.email,
-                password: data.password,
-            });
-
-            // Si el registro fue exitoso
-            setSuccess('Registro exitoso');
-        } catch (err) {
-            // Si hay un error
-            if (err.response && err.response.data.msg) {
-                setError(err.response.data.msg); // Mostrar mensaje del servidor
-            } else {
-                setError('Error en el registro'); // Error genérico
-            }
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/auth/register',
+        {
+          nombre: values.nombre,
+          email: values.email,
+          password: values.password,
         }
-    };
+      );
 
-    return (
-        <>
-            <h3>Registrarse</h3>
-
-            <div>
-                <form onSubmit={registerUser}>
-                    <label htmlFor="nombre">Nombre:</label>
-                    <input
-                        type="text"
-                        name="nombre"
-                        placeholder="Ingrese su nombre"
-                        onChange={(e) => setData({ ...data, name: e.target.value })}
-                    />
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Ingrese su email"
-                        onChange={(e) => setData({ ...data, email: e.target.value })}
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Ingrese su password"
-                        onChange={(e) => setData({ ...data, password: e.target.value })}
-                    />
-                    <button type="submit">Registrarse</button>
-                </form>
-                
-                {/* Mostrar mensajes de error o éxito */}
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {success && <p style={{ color: 'green' }}>{success}</p>}
-            </div>
-        </>
-    );
-};
-
-
-/*
-import { useState } from "react";
-
-export const Register = () => {
-
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        password: ''
-    })
-
-
-    const registerUser = (e) => {
-        e.preventDefault();
+      // Si el registro fue exitoso
+      setSuccess('Registro exitoso');
+    } catch (err) {
+      // Si hay un error
+      if (err.response && err.response.data.msg) {
+        setError(err.response.data.msg); // Mostrar mensaje del servidor
+      } else {
+        setError('Error en el registro'); // Error genérico
+      }
     }
+  };
 
-    return (
-        <>
-            <h3>Registrarse</h3>
+  return (
+    <>
+      <Form onFinish={registerUser} className="loginRegisterForm">
+        <Form.Item
+          name="nombre"
+          rules={[{ required: true, message: 'Por favor ingresa tu nombre!' }]}
+        >
+          <Input
+            type="text"
+            placeholder="Ingrese su nombre"
+            onChange={e => setData({ ...data, name: e.target.value })}
+          />
+        </Form.Item>
 
-            <div>
-                <form action="" onSubmit={registerUser}>
-                    <label htmlFor="nombre">Nombre:</label>
-                    <input type="text" name="nombre" placeholder="Ingrese su nombre" onChange={(e) => setData({...data, name:e.target.value})}/>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" name="email" placeholder="Ingrese su email" onChange={(e) => setData({...data, email:e.target.value})}/>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" placeholder="Ingrese su password" onChange={(e) => setData({...data, password:e.target.value})}/>
-                    <button type="submit">Registrarse</button>
-                </form>
-            </div>
-        </>
-    );
-}
-    */
+        <Form.Item
+          name="email"
+          rules={[{ required: true, message: 'Por favor ingresa tu email!' }]}
+        >
+          <Input
+            type="email"
+            placeholder="Ingrese su email"
+            onChange={e => setData({ ...data, email: e.target.value })}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="password"
+          rules={[
+            { required: true, message: 'Por favor ingresa tu contraseña!' },
+          ]}
+        >
+          <Input
+            type="password"
+            placeholder="Ingrese su contraseña"
+            onChange={e => setData({ ...data, password: e.target.value })}
+          />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Registrarse
+          </Button>
+        </Form.Item>
+
+        <Form.Item>
+          <p>
+            ¿Ya tienes una cuenta?{' '}
+            <a onClick={onShowLogin} className="link">
+              Inicia sesión aquí
+            </a>
+          </p>
+        </Form.Item>
+      </Form>
+
+      {/* Mostrar mensajes de error o éxito */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>{success}</p>}
+
+      {/* Enlace para volver al login */}
+    </>
+  );
+};

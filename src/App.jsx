@@ -11,18 +11,25 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 
 export const App = () => {
   return (
-    <>
+    <div className="App">
       <Navbar></Navbar>
       <Routes>
-        <Route path='/' element={<Home></Home>} ></Route>
-        <Route path='/register' element={<Register></Register>} ></Route>
-        <Route path='/login' element={<Login></Login>} ></Route>
-        {/* Ruta protegida */}
-        <Route path="/tamagochi" element={<PrivateRoute><Tamagochi /></PrivateRoute>} />
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        {/* <Route path="/register" element={<Register></Register>}></Route> LA COMENTO PQ AHORA SE RENDERIZA DENTRO DEL LOGIN*/}
+
+        <Route
+          path="/tamagochi"
+          element={
+            <PrivateRoute>
+              <Tamagochi />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-    </>
+    </div>
   );
-}
+};
 
 export default App;
 

@@ -1,55 +1,51 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { LoginOutlined, LogoutOutlined } from '@ant-design/icons';
 
 export const Navbar = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    // Verificar si el usuario está logeado comprobando el token en localStorage
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token); // Si existe el token, setIsLoggedIn será true
-    }, []);
+  // Verificar si el usuario está logeado comprobando el token en localStorage
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // Si existe el token, setIsLoggedIn será true
+  }, []);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token'); // Eliminar el token del almacenamiento local
-        setIsLoggedIn(false);
-        navigate('/'); // Redirigir al usuario a la página de login
-    };
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Eliminar el token del almacenamiento local
+    setIsLoggedIn(false);
+    navigate('/'); // Redirigir al usuario a la página de home
+  };
 
-    return (
-        <nav>
-            {isLoggedIn ? (
-                <>
-                    <Link to="/tamagochi">Tamagochi</Link>
-                    <button onClick={handleLogout}>Salir</button>
-                </>
-            ) : (
-                <>
-                    <Link to="/">Home</Link>
-                    <Link to="/register">Registrarse</Link>
-                    <Link to="/login">Login</Link>
-                </>
+  return (
+    <nav className="navbar">
+      <section onClick={() => navigate('/')}>
+        <img
+          src="https://img.icons8.com/?size=100&id=jUbBVjC028KV&format=png&color=000000"
+          alt="ICON"
+        />
+        <h2>Tamagotchi</h2>
+      </section>
+
+      <div>
+        {isLoggedIn ? (
+          <>
+            <LogoutOutlined className="navbar-icon" onClick={handleLogout} />
+          </>
+        ) : (
+          <section>
+            {/*si el path no es "/login" */}
+            {location.pathname !== '/login' && (
+              <LoginOutlined
+                className="navbar-icon"
+                onClick={() => navigate('/login')}
+              />
             )}
-        </nav>
-    );
+          </section>
+        )}
+      </div>
+    </nav>
+  );
 };
-
-
-/*
-import { Link } from "react-router-dom";
-
-
-
-export const Navbar = () => {
-    return(
-        <>
-            <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/register'>Register</Link>
-                <Link to='/login'>Login</Link>
-            </nav>
-        </>
-    );
-}
-*/

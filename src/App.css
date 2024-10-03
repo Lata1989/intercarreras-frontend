@@ -3,7 +3,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(to bottom right, #242424, #242424 50%, #1484e625);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,6 +32,7 @@ h1 {
   line-height: 1.1;
 }
 
+/*CSS LOGIN*/
 .loginContainer {
   display: flex;
   align-items: center;
@@ -41,13 +42,12 @@ h1 {
 }
 .loginBox {
   display: flex;
-  background-color: #1484e6;
-  padding: 0.3rem;
-  border-radius: 10px;
+  background-color: #1484e622;
+  padding: 0.5rem;
+  border-radius: 4rem;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 60%;
-  height: 70%;
+  height: 95%;
   justify-content: space-between;
   align-items: center;
 }
@@ -55,16 +55,99 @@ h1 {
 .loginRegisterForm {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 98%;
   width: 40%;
-  gap: 1rem;
+  gap: 0.1rem;
   padding: 1rem;
   background-color: #242424;
   border-radius: 2rem;
   color: white;
 }
 .link {
-  color: blue;
+  color: #1484e6;
   font-weight: 700;
   cursor: pointer;
 }
+
+.loginRegisterForm label {
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.loginRegisterForm .ant-btn {
+  background-color: #1484e670;
+}
+
+.loginRegisterForm .ant-btn:hover {
+  background-color: #1484e6b0 !important;
+}
+
+.loginRegisterForm .ant-input {
+  background-color: #323a48 !important;
+  color: white;
+}
+
+.loginRegisterForm .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.596); /* Color del placeholder */
+}
+.iconBigLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55%;
+}
+
+.iconBigLogin img {
+  height: 20rem;
+  width: 20rem;
+}
+/*CSS LOGIN FIN*/
+
+/*CSS NAVBAR*/
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #1484e622;
+  height: 4rem;
+}
+
+.navbar div a {
+  color: white;
+  text-decoration: underline;
+  font-size: x-large;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.navbar div a:hover {
+  color: #1484e6;
+}
+
+.navbar div .navbar-icon {
+  color: white;
+  font-size: 3rem;
+  height: 7rem;
+}
+.navbar div .navbar-icon:hover {
+  color: #1484e6;
+}
+
+.navbar section {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar section h2 {
+  color: black;
+  font-weight: 800;
+}
+
+.navbar section img {
+  height: 4rem;
+  width: 4rem;
+}
+/*CSS NAVBAR FIN*/

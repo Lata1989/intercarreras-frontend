@@ -1,7 +1,7 @@
 export const Tamagochi = () => {
-    return(
-        <>
-            <h1>Valido por un bichito.</h1>
-        </>
-    );
-}
+  return (
+    <>
+      <h1>Válido por un bichito.</h1>
+    </>
+  );
+};

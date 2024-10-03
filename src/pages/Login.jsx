@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, Alert } from 'antd';
 import { useNavigate } from 'react-router-dom'; // Importar Link
 import { Register } from './Register'; // Asegúrate de que la ruta sea correcta
 
@@ -49,10 +49,17 @@ export const Login = () => {
   return (
     <div className="loginContainer">
       <div className="loginBox">
-        <h1>{showRegister ? 'Registrarse' : 'Iniciar sesión'}</h1>
+        <section className="iconBigLogin">
+          <img
+            src="https://img.icons8.com/?size=100&id=119897&format=png&color=000000"
+            alt="ICON-BIG-LOGIN"
+          />
+        </section>
         {!showRegister ? (
           // Formulario de inicio de sesión
           <Form onFinish={loginUser} className="loginRegisterForm">
+            <h2>Inicia sesión</h2>
+            <label>Email</label>
             <Form.Item
               name="email"
               rules={[
@@ -66,6 +73,7 @@ export const Login = () => {
               />
             </Form.Item>
 
+            <label>Password</label>
             <Form.Item
               name="password"
               rules={[
@@ -80,14 +88,22 @@ export const Login = () => {
               />
             </Form.Item>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Iniciar sesión
-              </Button>
-            </Form.Item>
+            <Button type="primary" htmlType="submit">
+              Iniciar sesión
+            </Button>
+
+            {error && (
+              <Alert
+                message={error}
+                type="error"
+                style={{ marginTop: 5 }}
+                showIcon
+                closable
+              />
+            )}
 
             <Form.Item>
-              <p>
+              <p style={{ color: 'white' }}>
                 ¿No tienes una cuenta?{' '}
                 <a onClick={handleShowRegister} className="link">
                   Regístrate aquí
@@ -99,7 +115,6 @@ export const Login = () => {
           // Formulario de registro
           <Register onShowLogin={handleShowLogin} />
         )}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
     </div>
   );

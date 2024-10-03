@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Alert } from 'antd';
 
 export const Register = ({ onShowLogin }) => {
   const [data, setData] = useState({
@@ -42,6 +42,9 @@ export const Register = ({ onShowLogin }) => {
   return (
     <>
       <Form onFinish={registerUser} className="loginRegisterForm">
+        <h2>Regístrate</h2>
+
+        <label>Nombre</label>
         <Form.Item
           name="nombre"
           rules={[{ required: true, message: 'Por favor ingresa tu nombre!' }]}
@@ -52,7 +55,7 @@ export const Register = ({ onShowLogin }) => {
             onChange={e => setData({ ...data, name: e.target.value })}
           />
         </Form.Item>
-
+        <label>Email</label>
         <Form.Item
           name="email"
           rules={[{ required: true, message: 'Por favor ingresa tu email!' }]}
@@ -63,7 +66,7 @@ export const Register = ({ onShowLogin }) => {
             onChange={e => setData({ ...data, email: e.target.value })}
           />
         </Form.Item>
-
+        <label>Password</label>
         <Form.Item
           name="password"
           rules={[
@@ -77,14 +80,31 @@ export const Register = ({ onShowLogin }) => {
           />
         </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Registrarse
-          </Button>
-        </Form.Item>
+        <Button type="primary" htmlType="submit">
+          Registrarse
+        </Button>
 
+        {/* Mostrar mensajes de error o éxito */}
+        {error && (
+          <Alert
+            message={error}
+            type="error"
+            style={{ marginTop: 4 }}
+            showIcon
+            closable
+          />
+        )}
+        {success && (
+          <Alert
+            message={success}
+            type="success"
+            style={{ marginTop: 4 }}
+            showIcon
+            closable
+          />
+        )}
         <Form.Item>
-          <p>
+          <p style={{ color: 'white' }}>
             ¿Ya tienes una cuenta?{' '}
             <a onClick={onShowLogin} className="link">
               Inicia sesión aquí
@@ -92,12 +112,6 @@ export const Register = ({ onShowLogin }) => {
           </p>
         </Form.Item>
       </Form>
-
-      {/* Mostrar mensajes de error o éxito */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-
-      {/* Enlace para volver al login */}
     </>
   );
 };

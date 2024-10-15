@@ -3,7 +3,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(to bottom right, #242424, #242424 50%, #1484e625);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,6 +14,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom right, #242424, #242424 50%, #0a487e25);
 }
 
 a {
@@ -112,7 +112,7 @@ h1 {
   justify-content: space-between;
   padding: 0.5rem;
   background-color: #1484e622;
-  height: 4rem;
+  height: 5rem;
 }
 
 .navbar div a {

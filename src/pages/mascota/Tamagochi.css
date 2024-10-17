@@ -3,12 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa toda la pantalla */
+  height: 100vh;
+  /* Ocupa toda la pantalla */
   background: #242424;
   color: #fff;
+  margin-top: 1rem;
 }
 
 .info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin: 20px 0;
   background: rgba(0, 0, 0, 0.3);
   padding: 15px;
@@ -16,8 +21,16 @@
   text-align: center;
 }
 
+.info-container-stats {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 2rem;
+}
+
 .actions-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -35,4 +48,18 @@
 img {
   margin-top: 15px;
   border-radius: 10px;
+}
+
+@media(max-width:480px) {
+  .tamagochi-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Ocupa toda la pantalla */
+    background: #242424;
+    color: #fff;
+    margin-top: 6rem;
+  }
 }

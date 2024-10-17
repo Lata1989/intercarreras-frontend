@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { LoginOutlined, LogoutOutlined } from '@ant-design/icons';
+import './Navbar.css';
 
 export const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

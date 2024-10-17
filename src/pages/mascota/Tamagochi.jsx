@@ -56,18 +56,20 @@ export const Tamagochi = () => {
       <img
         src="https://i.imgur.com/doF33wE.gif"
         alt="Mascota"
-        style={{ width: '200px', height: 'auto' }}
+        style={{ width: '25rem', height: 'auto' }}
       />
 
       <div className="info-container">
         <h3>Información de la Mascota</h3>
-        <p>Hambre: {message.hambre}</p>
-        <p>Felicidad: {message.felicidad}</p>
-        <p>Sueño: {message.suenio}</p>
-        <p>Limpieza: {message.limpio}</p>
-        <p>Diversión: {message.diversion}</p>
-        <p>Temperatura: {message.temperatura}</p>
-        <p>Humedad: {message.humedad}</p>
+        <div className='info-container-stats'>
+          <p>Hambre: {message.hambre}</p>
+          <p>Felicidad: {message.felicidad}</p>
+          <p>Sueño: {message.suenio}</p>
+          <p>Limpieza: {message.limpio}</p>
+          <p>Diversión: {message.diversion}</p>
+          <p>Temperatura: {message.temperatura}</p>
+          <p>Humedad: {message.humedad}</p>
+        </div>
       </div>
       <div className="actions-container">
         <button onClick={() => sendMessage('alimentar')}>Alimentar</button>

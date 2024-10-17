@@ -4,6 +4,7 @@ import './Tamagochi.css';
 export const Tamagochi = () => {
   const [message, setMessage] = useState({});
   const [ws, setWs] = useState(null);
+  const [vivo, setVivo]=useState(true);
 
   useEffect(() => {
     const connectWebSocket = () => {
@@ -71,13 +72,25 @@ export const Tamagochi = () => {
           <p>Humedad: {message.humedad}</p>
         </div>
       </div>
+      {message.vivo? 
       <div className="actions-container">
         <button onClick={() => sendMessage('alimentar')}>Alimentar</button>
         <button onClick={() => sendMessage('carinio')}>Dar cariño</button>
         <button onClick={() => sendMessage('dormir')}>Dormir</button>
         <button onClick={() => sendMessage('jugar')}>Jugar</button>
         <button onClick={() => sendMessage('limpiar')}>Limpiar</button>
-      </div>
+      </div>: 
+      <div className="actions-container">
+      <button onClick={() => sendMessage('revivir')}>Revivir</button>
+    </div>}
+
+      {/* <div className="actions-container">
+        <button onClick={() => sendMessage('alimentar')}>Alimentar</button>
+        <button onClick={() => sendMessage('carinio')}>Dar cariño</button>
+        <button onClick={() => sendMessage('dormir')}>Dormir</button>
+        <button onClick={() => sendMessage('jugar')}>Jugar</button>
+        <button onClick={() => sendMessage('limpiar')}>Limpiar</button>
+      </div> */}
     </div>
   );
 };

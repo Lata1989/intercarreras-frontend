@@ -1,12 +1,9 @@
 import './App.css';
-
-// Mis imports
 import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/Navbar/Navbar';
 import { Home } from './pages/Home';
-import { Register } from './pages/Register';
 import { Login } from './pages/Login';
-import { Tamagochi } from './pages/Tamagochi';
+import { Tamagochi } from './pages/mascota/Tamagochi';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 
 export const App = () => {
@@ -21,9 +18,10 @@ export const App = () => {
         <Route
           path="/tamagochi"
           element={
-            <PrivateRoute>
-              <Tamagochi />
-            </PrivateRoute>
+            // <PrivateRoute>
+            //   <Tamagochi />
+            // </PrivateRoute>
+            <Tamagochi />
           }
         />
       </Routes>

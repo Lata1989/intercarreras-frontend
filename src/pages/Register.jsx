@@ -26,6 +26,7 @@ export const Register = ({ onShowLogin }) => {
           password: values.password,
         }
       );
+      console.log(response.data);
 
       // Si el registro fue exitoso
       setSuccess('Registro exitoso');

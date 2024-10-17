@@ -1,0 +1,38 @@
+.tamagochi-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la pantalla */
+  background: #242424;
+  color: #fff;
+}
+
+.info-container {
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.actions-container {
+  display: flex;
+  gap: 10px;
+}
+
+.actions-container button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #1484e670;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+img {
+  margin-top: 15px;
+  border-radius: 10px;
+}

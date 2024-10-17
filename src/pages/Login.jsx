@@ -50,10 +50,7 @@ export const Login = () => {
     <div className="loginContainer">
       <div className="loginBox">
         <section className="iconBigLogin">
-          <img
-            src="https://img.icons8.com/?size=100&id=119897&format=png&color=000000"
-            alt="ICON-BIG-LOGIN"
-          />
+          <img src="https://i.imgur.com/doF33wE.gif" alt="ICON-BIG-LOGIN" />
         </section>
         {!showRegister ? (
           // Formulario de inicio de sesión

@@ -1,42 +1,70 @@
 .tamagochi-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   height: 100vh;
-  /* Ocupa toda la pantalla */
+  width: 100%;
   background: #242424;
   color: #fff;
-  margin-top: 1rem;
+}
+
+.mascota-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+
+  justify-content: space-between;
 }
 
 .info-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+
   gap: 1rem;
-  margin: 20px 0;
+  margin: 0.6rem 0;
   background: rgba(0, 0, 0, 0.3);
   padding: 15px;
+  width: 20rem;
+  height: 69vh;
   border-radius: 10px;
   text-align: center;
 }
 
-.info-container-stats {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 2rem;
+.custom-slider .ant-slider-track {
+  background-color: #174873 !important;
 }
 
+.custom-slider .ant-slider-handle {
+  background-color: #174873 !important;
+}
+
+.stats-sensors {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+}
 .actions-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  margin: 0rem;
+  border-radius: 10px;
+  gap: 1rem;
+  width: 90%;
 }
 
 .actions-container button {
   padding: 10px 15px;
   font-size: 1rem;
+  width: 10rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -48,18 +76,4 @@
 img {
   margin-top: 15px;
   border-radius: 10px;
-}
-
-@media(max-width:480px) {
-  .tamagochi-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* Ocupa toda la pantalla */
-    background: #242424;
-    color: #fff;
-    margin-top: 6rem;
-  }
 }

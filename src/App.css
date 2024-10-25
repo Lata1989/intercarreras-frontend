@@ -10,13 +10,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(to bottom right, #242424, #242424 50%, #0a487e25);
-}
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -139,6 +132,7 @@ h1 {
 .navbar section {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .navbar section h2 {

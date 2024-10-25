@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Slider } from 'antd';
+
 import './Tamagochi.css';
+const maxSliderValue = 200;
 
 export const Tamagochi = () => {
   const [message, setMessage] = useState({});
   const [ws, setWs] = useState(null);
-  const [vivo, setVivo]=useState(true);
 
   useEffect(() => {
     const connectWebSocket = () => {
@@ -53,36 +55,112 @@ export const Tamagochi = () => {
 
   return (
     <div className="tamagochi-container">
-      <h2>Bipo</h2>
-      <img
-        src="https://i.imgur.com/doF33wE.gif"
-        alt="Mascota"
-        style={{ width: '25rem', height: 'auto' }}
-      />
+      <div className="mascota-container">
+        <div>
+          <h2>Bippo</h2>
+          <img
+            src="https://i.imgur.com/doF33wE.gif"
+            alt="Mascota"
+            style={{ width: '35rem', height: 'auto' }}
+          />
+        </div>
 
-      <div className="info-container">
-        <h3>Información de la Mascota</h3>
-        <div className='info-container-stats'>
-          <p>Hambre: {message.hambre}</p>
-          <p>Felicidad: {message.felicidad}</p>
-          <p>Sueño: {message.suenio}</p>
-          <p>Limpieza: {message.limpio}</p>
-          <p>Diversión: {message.diversion}</p>
-          <p>Temperatura: {message.temperatura}</p>
-          <p>Humedad: {message.humedad}</p>
+        <div className="info-container">
+          <div>
+            <p>Hambre</p>
+            <Slider
+              min={0}
+              max={maxSliderValue}
+              value={message.hambre}
+              tooltip={{
+                open: true,
+                placement: 'bottom',
+              }}
+              className="custom-slider"
+            />
+          </div>
+          <div>
+            <p>Felicidad</p>
+            <Slider
+              min={0}
+              max={maxSliderValue}
+              value={message.felicidad}
+              tooltip={{
+                open: true,
+                placement: 'bottom',
+              }}
+              className="custom-slider"
+            />
+          </div>
+          <div>
+            <p>Sueño</p>
+            <Slider
+              min={0}
+              max={maxSliderValue}
+              value={message.suenio}
+              tooltip={{
+                open: true,
+                placement: 'bottom',
+              }}
+              className="custom-slider"
+            />
+          </div>
+
+          <div>
+            <p>Limpieza</p>
+            <Slider
+              min={0}
+              max={maxSliderValue}
+              value={message.limpio}
+              tooltip={{
+                open: true,
+                placement: 'bottom',
+              }}
+              className="custom-slider"
+            />
+          </div>
+          <div>
+            <p>Diversión</p>
+            <Slider
+              min={0}
+              max={maxSliderValue}
+              value={message.diversion}
+              tooltip={{
+                open: true,
+                placement: 'bottom',
+              }}
+              className="custom-slider"
+            />
+          </div>
+
+          <section className="stats-sensors">
+            <div>
+              <p>Temperatura</p>
+              <p>{message.temperatura + '°C'}</p>
+            </div>
+            <div>
+              <p>Humedad</p>
+            </div>
+            <div>
+              <p>Luminosidad</p>
+              <p>{message.luz}</p>
+            </div>
+          </section>
         </div>
       </div>
-      {message.vivo? 
-      <div className="actions-container">
-        <button onClick={() => sendMessage('alimentar')}>Alimentar</button>
-        <button onClick={() => sendMessage('carinio')}>Dar cariño</button>
-        <button onClick={() => sendMessage('dormir')}>Dormir</button>
-        <button onClick={() => sendMessage('jugar')}>Jugar</button>
-        <button onClick={() => sendMessage('limpiar')}>Limpiar</button>
-      </div>: 
-      <div className="actions-container">
-      <button onClick={() => sendMessage('revivir')}>Revivir</button>
-    </div>}
+      {message.vivo ? (
+        <div className="actions-container">
+          <button onClick={() => sendMessage('alimentar')}>Alimentar</button>
+          <button onClick={() => sendMessage('carinio')}>Dar cariño</button>
+          <button onClick={() => sendMessage('dormir')}>Dormir</button>
+          <button onClick={() => sendMessage('jugar')}>Jugar</button>
+          <button onClick={() => sendMessage('limpiar')}>Limpiar</button>
+        </div>
+      ) : (
+        <div className="actions-container">
+          <button onClick={() => sendMessage('revivir')}>Revivir</button>
+        </div>
+      )}
 
       {/* <div className="actions-container">
         <button onClick={() => sendMessage('alimentar')}>Alimentar</button>

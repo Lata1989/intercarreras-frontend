@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Slider } from 'antd';
-
+import ImgAction from './ImgAction';
 import './Tamagochi.css';
-const maxSliderValue = 200;
+
+const maxSliderValue = 200; // slider
+
+// valida si entro en el triste o calor
+//(para q no se vuelva a ejecutar la accionImg 'default' cuando las condiciones no se cumplan)
+let flagTriste = false;
+let flagCalor = false;
 
 export const Tamagochi = () => {
   const [message, setMessage] = useState({});
+  const [actionImg, setActionImg] = useState('default');
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
@@ -45,7 +52,32 @@ export const Tamagochi = () => {
     return () => ws && ws.close();
   }, []);
 
+  // ACCIONES IMG Q DEPENDEN DE LOS ESTADOS
+  useEffect(() => {
+    if (message.felicidad < 90 && !flagTriste) {
+      setActionImg('triste');
+      flagTriste = true;
+    } else if (message.felicidad >= 90 && flagTriste) {
+      setActionImg('default');
+      flagTriste = false;
+    }
+
+    if (message.calor && !flagCalor) {
+      setActionImg('calor');
+      flagCalor = true;
+    } else if (!message.calor && flagCalor) {
+      setActionImg('default');
+      flagCalor = false;
+    }
+
+    if (message.vivo === false) {
+      setActionImg('morir');
+    }
+    console.log(actionImg);
+  }, [message]);
+
   const sendMessage = action => {
+    setActionImg(action);
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify({ accion: action }));
     } else {
@@ -58,11 +90,7 @@ export const Tamagochi = () => {
       <div className="mascota-container">
         <div>
           <h2>Bippo</h2>
-          <img
-            src="https://i.imgur.com/doF33wE.gif"
-            alt="Mascota"
-            style={{ width: '35rem', height: 'auto' }}
-          />
+          <ImgAction actionMasc={actionImg} setActionMasc={setActionImg} />
         </div>
 
         <div className="info-container">

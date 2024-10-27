@@ -3,7 +3,7 @@ import { Slider } from 'antd';
 import ImgAction from './ImgAction';
 import './Tamagochi.css';
 
-const maxSliderValue = 200; // slider
+const maxSliderValue = 500; // slider
 
 // valida si entro en el triste o calor
 //(para q no se vuelva a ejecutar la accionImg 'default' cuando las condiciones no se cumplan)
@@ -73,7 +73,6 @@ export const Tamagochi = () => {
     if (message.vivo === false) {
       setActionImg('morir');
     }
-    console.log(actionImg);
   }, [message]);
 
   const sendMessage = action => {
@@ -168,6 +167,7 @@ export const Tamagochi = () => {
             </div>
             <div>
               <p>Humedad</p>
+              <p>{message.humedad}</p>
             </div>
             <div>
               <p>Luminosidad</p>

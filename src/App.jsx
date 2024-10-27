@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/Navbar/Navbar';
-import { Home } from './pages/Home';
+// import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Tamagochi } from './pages/mascota/Tamagochi';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
@@ -11,17 +11,17 @@ export const App = () => {
     <div className="App">
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/" element={<Login></Login>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         {/* <Route path="/register" element={<Register></Register>}></Route> LA COMENTO PQ AHORA SE RENDERIZA DENTRO DEL LOGIN*/}
 
         <Route
           path="/tamagochi"
           element={
-            // <PrivateRoute>
-            //   <Tamagochi />
-            // </PrivateRoute>
-            <Tamagochi />
+            <PrivateRoute>
+              <Tamagochi />
+            </PrivateRoute>
+            // <Tamagochi />
           }
         />
       </Routes>

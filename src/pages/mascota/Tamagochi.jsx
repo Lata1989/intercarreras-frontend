@@ -3,7 +3,7 @@ import { Slider } from 'antd';
 import ImgAction from './ImgAction';
 import './Tamagochi.css';
 
-const maxSliderValue = 500; // slider
+const maxSliderValue = 100; // slider
 
 // valida si entro en el triste o calor
 //(para q no se vuelva a ejecutar la accionImg 'default' cuando las condiciones no se cumplan)

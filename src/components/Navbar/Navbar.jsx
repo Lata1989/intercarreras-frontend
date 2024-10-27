@@ -38,12 +38,16 @@ export const Navbar = () => {
         ) : (
           <section>
             {/*si el path no es "/login" */}
-            {location.pathname !== '/login' && (
+            <LoginOutlined
+                className="navbar-icon"
+                onClick={() => navigate('/login')}
+              />
+            {/* {location.pathname !== '/login' && (
               <LoginOutlined
                 className="navbar-icon"
                 onClick={() => navigate('/login')}
               />
-            )}
+            )} */}
           </section>
         )}
       </div>

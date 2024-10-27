@@ -171,7 +171,7 @@ export const Tamagochi = () => {
             </div>
             <div>
               <p>Luminosidad</p>
-              <p>{message.luz}</p>
+              <p>{message.luminosidad}</p>
             </div>
           </section>
         </div>

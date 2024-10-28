@@ -9,6 +9,7 @@ const maxSliderValue = 100; // slider
 //(para q no se vuelva a ejecutar la accionImg 'default' cuando las condiciones no se cumplan)
 let flagTriste = false;
 let flagCalor = false;
+let flagDormido = false;
 
 export const Tamagochi = () => {
   const [message, setMessage] = useState({});
@@ -54,10 +55,10 @@ export const Tamagochi = () => {
 
   // ACCIONES IMG Q DEPENDEN DE LOS ESTADOS
   useEffect(() => {
-    if (message.felicidad < 90 && !flagTriste) {
+    if (message.felicidad < 50 && !flagTriste) {
       setActionImg('triste');
       flagTriste = true;
-    } else if (message.felicidad >= 90 && flagTriste) {
+    } else if (message.felicidad >= 50 && flagTriste) {
       setActionImg('default');
       flagTriste = false;
     }
@@ -68,6 +69,14 @@ export const Tamagochi = () => {
     } else if (!message.calor && flagCalor) {
       setActionImg('default');
       flagCalor = false;
+    }
+
+    if (message.dormido && !flagDormido) {
+      setActionImg('dormir');
+      flagDormido = true;
+    } else if (!message.dormido && flagDormido) {
+      setActionImg('default');
+      flagDormido = false;
     }
 
     if (message.vivo === false) {

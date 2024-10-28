@@ -18,10 +18,10 @@ export const App = () => {
         <Route
           path="/tamagochi"
           element={
-            <PrivateRoute>
-              <Tamagochi />
-            </PrivateRoute>
-            // <Tamagochi />
+            // <PrivateRoute>
+            //   <Tamagochi />
+            // </PrivateRoute>
+            <Tamagochi />
           }
         />
       </Routes>

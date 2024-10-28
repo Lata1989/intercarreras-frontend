@@ -21,17 +21,32 @@ const ImgAction = ({ actionMasc, setActionMasc }) => {
           setActionImg(imgConst);
           setActionMasc(null);
           break;
+        case 'jugar':
+          setActionImg('https://imgur.com/4cippje.gif');
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          setActionImg(imgConst);
+          setActionMasc(null);
+          break;
+        case 'limpiar':
+          setActionImg('https://imgur.com/dSecZy1.gif');
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          setActionImg(imgConst);
+          setActionMasc(null);
+          break;
 
         // ACCIONES Q DEPENDEN DEL STATUS
-        case 'calor':
+        case 'dormir':
           // esta img va a ser temporal hasta q se deje de cumplir la condicion de calor
+          imgConst = 'https://imgur.com/9erpLPl.gif';
+          setActionImg('https://imgur.com/9erpLPl.gif');
+          break;
+        case 'calor':
           imgConst = 'https://i.imgur.com/hdkvYGI.gif';
           setActionImg('https://imgur.com/hdkvYGI.gif');
           break;
         case 'triste':
           imgConst = 'https://i.imgur.com/WCIC9mN.gif';
           setActionImg(imgConst);
-
           break;
         case 'morir':
           imgConst = 'https://imgur.com/xl2vrO9.gif';
